@@ -1,0 +1,100 @@
+/* ============================= =================================
+                          CSS VARIABLES
+============================= ================================= */
+:root {
+  --accent: #A7C942;
+  --accent-ligth: #EAF2D3;
+  --dark: #777777;
+  --grey: #e9e9e9;
+  --white: #fff;
+  --bold: 700;
+  --regular: 400;
+}
+
+/* ============================= =================================
+                          Fonts import
+============================= ================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap');
+
+
+/* ============================= =================================
+                         Global Styles
+============================= ================================= */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: inherit;
+}
+
+img {
+  width: 100%;
+}
+
+
+/* ============================= =================================
+Main Styles
+============================= ================================= */
+.btn-rigth {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: var(--bold);
+}
+
+.space {
+  padding: 0 4em;
+}
+
+.flex {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  margin-top: 4em;
+}
+
+
+.card {
+  max-width: 30%;
+}
+
+@media screen and (max-width: 600px) {
+  .flex {
+    gap: 1em;
+  }
+
+  .card {
+    max-width: 48%;
+  }
+}
+
+.card-content__wrap {
+  overflow: hidden;
+  font-size: 1.2rem;
+  text-overflow: clip;
+  height: 4em;
+}
