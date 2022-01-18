@@ -1,31 +1,23 @@
 export default class ViewCards {
   BODY = document.body.querySelector('.flex');
 
-  renderSneakers(sneakers){
+  renderSneakers(sneakers) {
     this.BODY.insertAdjacentHTML('beforeend', sneakers.map(this.getSneakersHTML).join(''));
   }
 
-  getSneakersHTML({ model, image, description, price }){
+  getSneakersHTML({ model, image, description, price }) {
     return `
-        <div class="card">
-          <div class="card-image">
-            <img
-              src="${image}" alt="${model}">
-            <span class="card-title grey-text text-darken-3">${model}</span>
+        <div class="card"">
+          <img src="${image}" class="card-img-top" alt="${model}">
+          <div class="card-body">
+            <h5 class="card-title">${model}</h5>
+            <p class="card-text">${description}</p>
+            <div class="card-action">
+            <h5 class="price">${price}</h5>
+            <a href="#" class="btn btn-lg btn-dark">Add <i class="bi bi-bag-plus-fill"></i></a>
+            </div>
           </div>
-          <div class="card-content">
-            <p class="card-content__wrap">${description}</p>
-          </div>
-          <!-- /.card-content -->
-          <div class="card-action btn-rigth">
-            <span class="price">$ ${price}</span>
-            <a class="waves-effect waves-light btn-small btn-m-right grey darken-4">Add
-              <i class="material-icons right">add_shopping_cart</i>
-            </a>
-          </div>
-          <!-- /.card-action -->
         </div>
-        <!-- /.card -->
     `;
   }
 }
