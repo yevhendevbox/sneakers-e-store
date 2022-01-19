@@ -28,12 +28,7 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
@@ -45,29 +40,15 @@ a:hover {
   color: inherit;
 }
 
-img {
-  width: 100%;
-}
-
-
 /* ============================= =================================
 Main Styles
 ============================= ================================= */
-.navbar .navbar-brand {
-  display: flex;
-  align-content: center;
-  align-items: center;
-  font-size: 2rem;
-  font-weight: var(--bold);
-}
 
-.nav-btns,
-.navbar-brand i {
+.nav-btns {
   font-size: 4rem;
 }
 
-.nav-btns a,
-.navbar-brand i {
+.nav-btns a {
   margin-right: .4em;
 }
 
@@ -75,20 +56,8 @@ Main Styles
   font-size: 2.5rem;
 }
 
-.flex {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2em;
-  margin-top: 4em;
-}
-
 .card {
-  max-width: 30%;
-}
-
-.card-body {
-  padding: 2em;
+  cursor: pointer;
 }
 
 .card-title {
@@ -98,32 +67,18 @@ Main Styles
 
 .card-text {
   font-size: 1.2rem;
-  max-height: 7em;
-  margin-bottom: 1em;
-  overflow: hidden;
-  word-wrap: break-word;
 }
 
-.card-action {
-  position: sticky;
-  bottom: 0;
+.card-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   align-content: center;
+  border-top: none;
+  padding-bottom: 1rem;
 }
 
 .card .btn {
   font-size: 1.6rem;
   padding: .5em 1.5em;
-}
-
-@media screen and (max-width: 600px) {
-  .flex {
-    gap: 1em;
-  }
-
-  .card {
-    max-width: 48%;
-  }
 }
