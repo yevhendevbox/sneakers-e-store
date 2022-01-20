@@ -76,15 +76,15 @@ Main Styles
 }
 
 .flex {
-  width: 100%;
+  width: 75%;
   display: flex;
   flex-wrap: wrap;
-  gap: 2em;
+  gap: 1em;
   margin-top: 4em;
 }
 
 .card {
-  max-width: 30%;
+  max-width: 32%;
 }
 
 .card-body {
@@ -104,18 +104,47 @@ Main Styles
   word-wrap: break-word;
 }
 
-.card-action {
-  position: sticky;
-  bottom: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
-}
-
 .card .btn {
   font-size: 1.6rem;
   padding: .5em 1.5em;
+}
+
+.card-footer {
+  border-top: 0;
+  padding: 2em;
+  padding-top: 0;
+}
+
+.sort-inputs {
+  display: flex;
+  justify-content: end;
+  margin-top: 4em;
+}
+
+.form-floating {
+  width: 20%;
+  margin-right: 5.5em;
+  font-size: 1.2rem;
+}
+
+.form-floating label {
+  font-size: 1rem;
+}
+
+.main-content {
+  display: flex;
+  gap: 2em;
+}
+
+.sidebar {
+  width: 20%;
+  margin-top: 4em;
+}
+
+.form-check-input {
+  width: 15px;
+  height: 15px;
+  margin-right: 1em;
 }
 
 @media screen and (max-width: 600px) {
