@@ -14,7 +14,7 @@ export default class ViewCards {
   //  HTML template for product card
   getSneakersHTML({ id, model, image, description, price, brand }) {
     return `
-        <div class="card"">
+        <div class="card" data-id="${id}">
           <img src="${image}" class="card-img-top" alt="${model}">
           <div class="card-body">
             <h5 class="card-title">${model}</h5>
@@ -28,9 +28,6 @@ export default class ViewCards {
         </div>
     `;
   }
-  getCardId = event => {
-    console.log('target', event.target);
-    console.log('current target', event.currentTarget);
-    console.log('sorce element', event.srcElement);
-  }
+  // Get clicked card ID
+  getCardId = event => event.target.closest(".card").dataset.id;
 }
