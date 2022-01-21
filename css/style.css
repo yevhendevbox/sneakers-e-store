@@ -110,15 +110,18 @@ Main Styles
   word-wrap: break-word;
 }
 
-.card .btn {
-  font-size: 1.6rem;
-  padding: .5em 1.5em;
-}
-
 .card-footer {
   border-top: 0;
   padding: 2em;
   padding-top: 0;
+}
+
+.btn-dark {
+  transition: background-color .2s ease-in !important;
+}
+
+.btn-dark:hover {
+  background-color: rgb(42, 42, 42) !important;
 }
 
 .sort-inputs {
@@ -178,9 +181,47 @@ Main Styles
   color: black !important;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
   .flex {
+    width: 70%;
     gap: 1em;
+  }
+
+  .sidebar {
+    width: 30%;
+  }
+
+  .card {
+    max-width: 48%;
+  }
+
+  .form-floating {
+    margin-right: 1em;
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 765px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .flex {
+    width: 100%;
+  }
+
+  .form-floating {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 515px) {
+  .flex {
+    width: 100%;
   }
 
   .card {

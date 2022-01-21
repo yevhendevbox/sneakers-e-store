@@ -1,9 +1,11 @@
+
 export default class ViewCards {
   BODY = document.body.querySelector('.flex');
 
   constructor(handleClickCardDetails){
   // Addin event on the products container to handke witch card was clicked...
     this.BODY.addEventListener('click', handleClickCardDetails);
+
   }
   // Render cards template to the page
   renderSneakers(sneakers) {
@@ -28,6 +30,4 @@ export default class ViewCards {
         </div>
     `;
   }
-  // Get clicked card ID
-  getCardId = event => event.target.closest(".card").dataset.id;
 }

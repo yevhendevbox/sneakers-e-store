@@ -20,13 +20,14 @@ export default class ControllerCards{
     const data = this.model.getSortData(sortType);
     this.view.renderSneakers(data);
   }
-  handleFilter = filterType => {
 
-  }
+  // Get clicked card ID
+  getCardId = event => event.target.closest(".card").dataset.id;
 
   handleClickCardDetails = event => {
-    const id = this.view.getCardId(event);
+    const id = this.getCardId(event);
   }
 
+  handleOpenModal(event){}
 
 }

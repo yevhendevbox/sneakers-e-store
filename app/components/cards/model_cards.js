@@ -38,4 +38,5 @@ export default class ModelCards {
     }
     return this.data;
   }
+  //  Method to catch event getObjForModalById
 }
