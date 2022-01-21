@@ -21,13 +21,11 @@ export default class ControllerCards{
     this.view.renderSneakers(data);
   }
 
-  // Get clicked card ID
-  getCardId = event => event.target.closest(".card").dataset.id;
 
   handleClickCardDetails = event => {
-    const id = this.getCardId(event);
+    const id = this.view.getCardId(event);
+    const clickedCard = this.model.data.find(obj => obj.id === id);
+    console.log(clickedCard);
   }
-
-  handleOpenModal(event){}
 
 }

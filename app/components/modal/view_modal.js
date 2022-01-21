@@ -8,9 +8,7 @@ export default class ViewModal {
     this.renderModalWindow();
   }
 
-  addListeners(){}
-
-  renderModalWindow = () => {
+  renderModalWindow = (obj) => {
     const strHTML = `
       <div class="modal-outer">
         <div class="modal-inner">

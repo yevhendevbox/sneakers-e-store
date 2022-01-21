@@ -30,4 +30,8 @@ export default class ViewCards {
         </div>
     `;
   }
+
+    // Get clicked card ID
+    getCardId = event => event.target.closest(".card").dataset.id;
+
 }
