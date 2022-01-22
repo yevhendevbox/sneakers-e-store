@@ -76,15 +76,21 @@ Main Styles
 }
 
 .flex {
-  width: 100%;
+  width: 75%;
   display: flex;
   flex-wrap: wrap;
-  gap: 2em;
+  gap: 1em;
   margin-top: 4em;
 }
 
 .card {
-  max-width: 30%;
+  max-width: 32%;
+  transition: all .3s ease;
+}
+
+.card:hover {
+  cursor: pointer;
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
 }
 
 .card-body {
@@ -104,26 +110,213 @@ Main Styles
   word-wrap: break-word;
 }
 
-.card-action {
-  position: sticky;
-  bottom: 0;
+.card-footer {
+  border-top: 0;
+  padding: 2em;
+  padding-top: 0;
+}
+
+.btn-dark {
+  transition: background-color .2s ease-in !important;
+}
+
+.btn-dark:hover {
+  background-color: rgb(42, 42, 42) !important;
+}
+
+.sort-inputs {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
+  justify-content: end;
+  margin-top: 4em;
 }
 
-.card .btn {
-  font-size: 1.6rem;
-  padding: .5em 1.5em;
+.form-floating {
+  width: 20%;
+  margin-right: 5.5em;
+  font-size: 1.2rem;
 }
 
-@media screen and (max-width: 600px) {
+.form-floating label {
+  font-size: 1rem;
+}
+
+.main-content {
+  display: flex;
+  gap: 2em;
+}
+
+.sidebar {
+  width: 20%;
+  margin-top: 4em;
+}
+
+.form-check-input {
+  width: 15px;
+  height: 15px;
+  margin-right: 1em;
+}
+
+.form-check-input:checked {
+  background-color: rgb(0, 0, 0) !important;
+}
+
+.form-check-input:checked:focus {
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 0, 0, 0.25)
+}
+
+.form-check-input:focus {
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 0, 0, 0.25)
+}
+
+.form-check-input:active {
+  background-color: #1b1b1b;
+}
+
+.accordion-header button {
+  background-color: transparent !important;
+  color: black !important;
+}
+
+.accordion-header button:after {
+  color: black !important;
+}
+
+@media screen and (max-width: 1000px) {
   .flex {
+    width: 70%;
     gap: 1em;
+  }
+
+  .sidebar {
+    width: 30%;
   }
 
   .card {
     max-width: 48%;
+  }
+
+  .form-floating {
+    margin-right: 1em;
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 765px) {
+  .main-content {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .flex {
+    width: 100%;
+  }
+
+  .form-floating {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 515px) {
+  .flex {
+    width: 100%;
+  }
+
+  .card {
+    max-width: 48%;
+  }
+}
+
+/* ============================= =================================
+                          Modal window
+============================= ================================= */
+.modal-outer {
+  display: grid;
+  background: hsla(0, 0%, 18%, 0.5);
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  /* Hide this modal until we need it */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.modal-outer img {
+  width: 100%;
+}
+
+.modal-outer.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-inner {
+  max-width: 800px;
+  min-width: 400px;
+  padding: 3rem;
+  border-radius: 5px;
+  background: white;
+  transform: translateY(-200%);
+  transition: transform .3s;
+}
+
+.modal-outer.open .modal-inner {
+  transform: translateY(0);
+}
+
+.detailes_wrapper {
+  display: flex;
+  gap: 3em;
+}
+
+.detailes_content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  font-size: 1.4rem;
+}
+
+.detailes_content button {
+  padding: 1em 0;
+  font-size: 1.4rem;
+}
+
+.details_content--brand {
+  font-size: 1.8rem;
+  font-weight: var(--bold);
+  margin-bottom: 1em;
+}
+
+.details_content--price {
+  margin: 1em 0 !important;
+}
+
+.detailes_img {
+  width: 50%;
+}
+
+.btn-close {
+  position: absolute;
+  top: -1rem;
+  right: 0;
+}
+
+@media screen and (max-width: 765px) {
+  .detailes_wrapper {
+    flex-direction: column;
+  }
+
+  .detailes_content,
+  .detailes_img {
+    width: 100%;
   }
 }
