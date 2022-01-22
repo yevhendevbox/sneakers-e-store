@@ -85,15 +85,74 @@ Main Styles
 }
 
 .card-footer {
+  border-top: none;
+}
+
+.footer-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
   align-content: center;
-  border-top: none;
   padding-bottom: 1rem;
 }
 
 .card .btn {
   font-size: 1.6rem;
   padding: .5em 1.5em;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+/* ============================= =================================
+modal window
+============================= ================================= */
+
+.my_modal {
+  display: none !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.my_content {
+  width: 500px;
+  height: 700px;
+}
+
+.show {
+  display: flex !important;
+}
+
+.card-img-wrapper {
+  width: 350px;
+  margin: 0 auto;
+}
+
+.modal-body{
+  padding: 1rem 1rem 0 1rem;
+}
+
+.modal-title {
+  text-transform: uppercase;
+  color: #007bff;
+}
+
+.modal-span {
+  color: black;
+  letter-spacing: 1px;
+  display: inline-block;
+  width: 75px;
+}
+
+.modal-price {
+  text-transform: uppercase;
+  color: black;
+  display: inline-block;
+  margin-right: 10px;
 }

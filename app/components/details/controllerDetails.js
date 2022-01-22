@@ -4,9 +4,18 @@ import ViewDetails from "./ViewDetails.js";
 export default class ControllerDetails {
 
   constructor() {
-    this.view = new ViewDetails();
+    this.view = new ViewDetails(this.closeModal);
 
-    this.pub = Publisher;
+    this.pub = new Publisher();
+
+    this.pub.subscribe('DETAILS', this.showModal)
   }
 
+  showModal = (card) => {
+    this.view.render(card);
+  }
+
+  closeModal = (e) => {
+    this.view.close(e);
+  }
 }

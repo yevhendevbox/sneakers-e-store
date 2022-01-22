@@ -5,7 +5,7 @@ import Publisher from "../../publisher.js";
 export default class ControllerCards {
   constructor(){
     this.model = new ModelCards();
-    this.view = new ViewCards(this.handleClickLike);
+    this.view = new ViewCards(this.handleClickLike, this.handleClickDetails);
 
     this.init();
 
@@ -23,8 +23,9 @@ export default class ControllerCards {
   }
 
   handleClickDetails = ev => {
-    const id = this.view.getBtnId(ev);
-    this.pub.notify('DETAILS', id);
+    // debugger;
+    const card = this.model.getCard(ev.target.dataset.id);
+    this.pub.notify('DETAILS', card);
   }
 
   handleClickLike = ev => {
