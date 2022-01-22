@@ -3,7 +3,7 @@ export default class ViewCards {
   BODY = document.body.querySelector('.flex');
 
   constructor(handleClickCardDetails){
-  // Addin event on the products container to handke witch card was clicked...
+  // Addin event on the products container to handle witch card was clicked...
     this.BODY.addEventListener('click', handleClickCardDetails);
 
   }

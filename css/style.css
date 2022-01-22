@@ -258,15 +258,65 @@ Main Styles
 }
 
 .modal-inner {
-  max-width: 600px;
+  max-width: 800px;
   min-width: 400px;
-  padding: 2rem;
+  padding: 3rem;
   border-radius: 5px;
   background: white;
   transform: translateY(-200%);
-  transition: transform 2s;
+  transition: transform .3s;
 }
 
 .modal-outer.open .modal-inner {
   transform: translateY(0);
+}
+
+.detailes_wrapper {
+  display: flex;
+  gap: 3em;
+}
+
+.detailes_content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  font-size: 1.4rem;
+}
+
+.detailes_content button {
+  padding: 1em 0;
+  font-size: 1.4rem;
+}
+
+.details_content--brand {
+  font-size: 1.8rem;
+  font-weight: var(--bold);
+  margin-bottom: 1em;
+}
+
+.details_content--price {
+  margin: 1em 0 !important;
+}
+
+.detailes_img {
+  width: 50%;
+}
+
+.btn-close {
+  position: absolute;
+  top: -1rem;
+  right: 0;
+}
+
+@media screen and (max-width: 765px) {
+  .detailes_wrapper {
+    flex-direction: column;
+  }
+
+  .detailes_content,
+  .detailes_img {
+    width: 100%;
+  }
 }

@@ -25,7 +25,7 @@ export default class ControllerCards{
   handleClickCardDetails = event => {
     const id = this.view.getCardId(event);
     const clickedCard = this.model.data.find(obj => obj.id === id);
-    console.log(clickedCard);
+    this.observer.notify("ON_CLICK_OPEN_MODAL", clickedCard);
   }
 
 }
