@@ -33,7 +33,7 @@ export default class ModelCards {
     if (sortType === 'brandZ') {
       this.data.sort((a, b) => b.brand > a.brand);
     }
-    debugger;
+    // debugger;
     return this.data;
   }
 }

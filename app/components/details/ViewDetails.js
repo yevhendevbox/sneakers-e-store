@@ -7,4 +7,8 @@ export default class ViewDetails {
 
     this.handleClickDetails = handleClickDetails;
   }
+
+  getBtnId = (ev) => {
+
+  }
 }

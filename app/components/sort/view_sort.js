@@ -12,12 +12,12 @@ export default class ViewSort {
   }
 
   addListeners(listener) {
-    debugger;
+    // debugger;
     document.querySelector(this.FORM_SELECT).addEventListener('change', listener)
   }
 
   renderSelect() {
-    debugger;
+    // debugger;
     const form_select = `
       <div class="col-3 ms-auto" >
         <select class="form-select ms-auto" aria-label="Default select example">

@@ -4,9 +4,10 @@ export default class ViewCards {
   constructor(handleClickLike, handleClickDetails) {
     this.content = document.querySelector('.content');
 
-    this.handleClickLike = handleClickLike;
+    // this.handleClickLike = handleClickLike;
     this.handleClickDetails = handleClickDetails;
 
+    //listener for click likes
     this.BODY.addEventListener('click', handleClickLike)
   }
 
@@ -21,13 +22,13 @@ export default class ViewCards {
   getSneakersHTML({ id, model, image, description, price, brand }) {
     return `
       <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-4">
-        <div class="card mb-4 h-100">
-          <img src="${image}" class="card-img-top" alt="${model}">
+        <div class="card mb-4 h-100 mycard" data-id="${ id }">
+          <img src="${ image }" class="card-img-top" alt="${ model }">
           <div class="card-body">
-            <h5 class="card-title">${model}</h5>
-            <h4 class="card-subtitle mb-2 text-muted">${brand}</h4>
-            <p class="card-text">${description}</p>
-            <button type="button" class="btn btn-success btn-details" data-id="${id}">Details</button>
+            <h5 class="card-title">${ model }</h5>
+            <h4 class="card-subtitle mb-2 text-muted">${ brand }</h4>
+            <p class="card-text">${ description }</p>
+            <button type="button" class="btn btn-success btn-details" data-id="${ id }">Details</button>
           </div>
           <div class="card-footer bg-transparent">
             <h5 class="price">${price}</h5>
@@ -37,6 +38,8 @@ export default class ViewCards {
       </div>  
     `;
   }
+  //TODO: move to controller?
+  getCardId = ev => ev.target.closest('.mycard')?.dataset.id;
 
-
+  getBtnId = ev => ev.target.closest('.btn-details').dataset.id;
 }
