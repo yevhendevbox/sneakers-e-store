@@ -85,6 +85,7 @@ Main Styles
 
 .card {
   max-width: 32%;
+  max-height: 30.5vw;
   transition: all .3s ease;
 }
 
@@ -226,6 +227,7 @@ Main Styles
 
   .card {
     max-width: 48%;
+    max-height: 50%;
   }
 }
 

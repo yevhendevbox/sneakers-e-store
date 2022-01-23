@@ -19,6 +19,17 @@ export default class ModelCards {
     return data;
   }
 
+  getFilterData(arr) {
+    let filteredData = [];
+    const type = arr[1];
+    const value = arr[0];
+
+    filteredData = this.data.filter(item => {
+      return item[type].toLowerCase() === value;
+    });
+    this.filteredData = filteredData;
+    return filteredData;
+  }
 
   // Sorting logic
   getSortData(sortType){
@@ -26,17 +37,22 @@ export default class ModelCards {
       priceUp: -1,
       priceDown: 1,
     }
+    let dataTemp = this.data;
     const sortMulti = sortVocabular[sortType];
+
+    if (this.filteredData !== []) {
+      dataTemp = this.filteredData;
+    }
     if (sortType.includes('price')){
-      this.data.sort((a, b) => (a.price - b.price) * sortMulti);
+      dataTemp.sort((a, b) => (a.price - b.price) * sortMulti);
     }
     if (sortType === 'brandA') {
-      this.data.sort((a, b) => a.brand > b.brand);
+      dataTemp.sort((a, b) => a.brand > b.brand);
     }
     if (sortType === 'brandZ') {
-      this.data.sort((a, b) => b.brand > a.brand);
+      dataTemp.sort((a, b) => b.brand > a.brand);
     }
-    return this.data;
+    return dataTemp;
   }
   //  Method to catch event getObjForModalById
 }

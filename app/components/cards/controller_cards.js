@@ -11,6 +11,7 @@ export default class ControllerCards{
 
     this.observer = new Observer();
     this.observer.subscribe("ON_CLICK_SORT", this.handleSort);
+    this.observer.subscribe("ON_CLICK_FILTER", this.handleFilter);
   }
   init(){
     this.model.getData().then(d => this.view.renderSneakers(d));
@@ -21,11 +22,16 @@ export default class ControllerCards{
     this.view.renderSneakers(data);
   }
 
+  handleFilter = filterType => {
+    const data = this.model.getFilterData(filterType);
+    this.view.renderSneakers(data);
+  }
 
   handleClickCardDetails = event => {
     const id = this.view.getCardId(event);
     const clickedCard = this.model.data.find(obj => obj.id === id);
     this.observer.notify("ON_CLICK_OPEN_MODAL", clickedCard);
   }
+
 
 }
