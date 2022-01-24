@@ -320,3 +320,74 @@ Main Styles
     width: 100%;
   }
 }
+
+/* ============================= =================================
+                          Cart
+============================= ================================= */
+.cart_icon {
+  margin-left: 8px;
+}
+
+.cart_icon:hover {
+  color: #21bb46;
+}
+
+.cart_counter {
+  border-radius: 50%;
+  background-color: #21bb46;
+  color: #fff;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+}
+
+.form-select:focus {
+  border: 1px solid #ced4da;
+  outline-offset: 0;
+  outline: 0;
+  box-shadow: none;
+}
+/* ---modal cart---- */
+/*.my_modal {*/
+/*  display: none !important;*/
+/*  background: rgba(0, 0, 0, 0.5) !important;*/
+/*  justify-content: center !important;*/
+/*  align-items: center !important;*/
+/*}*/
+
+/*.my_content {*/
+/*  width: 500px;*/
+/*  height: 700px;*/
+/*}*/
+
+/*.modal-show {*/
+/*  display: flex !important;*/
+/*}*/
+
+.modal-top {
+  justify-content: center !important;
+  text-transform: uppercase;
+  color: #21bb46;
+  display: flex;
+  padding: 1rem 1rem;
+}
+
+/*.modal-span {*/
+/*  color: black;*/
+/*  letter-spacing: 1px;*/
+/*  display: inline-block;*/
+/*  width: 75px;*/
+/*}*/
+/*.modal-price {*/
+/*  text-transform: uppercase;*/
+/*  color: black;*/
+/*  display: inline-block;*/
+/*  margin-right: 10px;*/
+/*}*/
+
+.cartModal .modal-inner {
+  max-width: 900px;
+  min-width: 600px;
+}
+
