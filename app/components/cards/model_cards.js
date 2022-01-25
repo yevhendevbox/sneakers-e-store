@@ -1,6 +1,6 @@
 export default class ModelCards {
     URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRcESKRYVExtFTOPQsh3oZflgb4jVqS2yvf3MnWzwweiz-gmnLZWnpZ20tul3-3Z0o1ioIasliMJgbp/pub?output=tsv";
-
+    filteredData = [];
   getData() {
     return fetch(this.URL)
             .then(resp => resp.text())
@@ -40,17 +40,17 @@ export default class ModelCards {
     let dataTemp = this.data;
     const sortMulti = sortVocabular[sortType];
 
-    if (this.filteredData !== []) {
+    if (this.filteredData.length) {
       dataTemp = this.filteredData;
     }
     if (sortType.includes('price')){
       dataTemp.sort((a, b) => (a.price - b.price) * sortMulti);
     }
     if (sortType === 'brandA') {
-      dataTemp.sort((a, b) => a.brand > b.brand);
+      dataTemp.sort((a, b) => a.brand.localeCompare(b.brand));
     }
     if (sortType === 'brandZ') {
-      dataTemp.sort((a, b) => b.brand > a.brand);
+      dataTemp.sort((a, b) => b.brand.localeCompare(a.brand));
     }
     return dataTemp;
   }
