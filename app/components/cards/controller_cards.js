@@ -29,7 +29,8 @@ export default class ControllerCards{
   }
 
   handleSearch = searchReq => {
-    console.log(searchReq);
+    const data = this.model.getSearchedData(searchReq);
+    this.view.renderSneakers(data);
   }
 
   handleClickCardDetails = event => {

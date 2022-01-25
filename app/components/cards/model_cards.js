@@ -1,6 +1,7 @@
 export default class ModelCards {
     URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRcESKRYVExtFTOPQsh3oZflgb4jVqS2yvf3MnWzwweiz-gmnLZWnpZ20tul3-3Z0o1ioIasliMJgbp/pub?output=tsv";
     filteredData = [];
+    searchResult = [];
   getData() {
     return fetch(this.URL)
             .then(resp => resp.text())
@@ -37,6 +38,27 @@ export default class ModelCards {
     });
     this.filteredData = filteredData;
     return filteredData;
+  }
+
+  getSearchedData(str){
+
+    if (!str && !this.filteredData.length){
+      this.filteredData = this.data;
+      return this.filteredData;
+    }
+
+    if (!this.filteredData.length) {
+      this.filteredData = this.data;
+    }
+
+    this.searchResult = this.filteredData.filter(item => item.brand.toLowerCase().includes(str.toLowerCase())
+);
+
+    if (this.searchResult.length === 0) {
+      this.searchResult = this.filteredData.filter(item => item.model.toLowerCase().includes(str.toLowerCase()));
+    }
+
+    return this.searchResult;
   }
 
   // Sorting logic

@@ -71,6 +71,14 @@ Main Styles
   margin-right: .4em;
 }
 
+.nav-btns {
+  order: 2;
+}
+
+.nav-search {
+  order: 1;
+}
+
 .price {
   font-size: 2.5rem;
 }
