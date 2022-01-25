@@ -21,8 +21,16 @@ export default class ModelCards {
 
   getFilterData(arr) {
     let filteredData = [];
-    const type = arr[1];
-    const value = arr[0];
+    let type;
+    let value;
+
+    if (!arr.length) {
+      this.filteredData = this.data;
+      return this.filteredData;
+    }
+
+    type = arr[1];
+    value = arr[0];
 
     filteredData = this.data.filter(item => {
       return item[type].toLowerCase() === value;

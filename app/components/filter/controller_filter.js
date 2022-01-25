@@ -18,17 +18,19 @@ export default class ControllerFilter {
     const targetCheckbox = event.target;
     const checkBox = targetCheckbox.value.toLowerCase();
     const fType = targetCheckbox.closest('.accordion-item').dataset.filter;
+    let criteria = [checkBox, fType];
 
     [...document.querySelectorAll('.form-check-input')].forEach(item => {
       if (!targetCheckbox.checked) {
         item.disabled = false;
+        criteria = [];
       } else {
         item.disabled = true;
         targetCheckbox.disabled = false;
       }
     })
 
-    this.observer.notify('ON_CLICK_FILTER', [checkBox, fType]);
+    this.observer.notify('ON_CLICK_FILTER', criteria);
   }
 
 }
