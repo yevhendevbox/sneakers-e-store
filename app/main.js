@@ -4,6 +4,7 @@ import ControllerModal from "./components/modal/controller_modal.js";
 import ControllerSearch from "./components/search/controller_search.js";
 import ControllerSort from "./components/sort/controller_sort.js";
 import ControllerCart from "./components/cart/controller_cart.js";
+import ControllerOrder from "./components/order/controller_order.js";
 
 const controllerCards = new ControllerCards();
 const controllerModal = new ControllerModal();
@@ -11,3 +12,4 @@ const controllerCart = new ControllerCart();
 const controllerSort = new ControllerSort();
 const controllerFilter = new ControllerFilter();
 const controllerSearch = new ControllerSearch();
+const controllerOrder = new ControllerOrder();
