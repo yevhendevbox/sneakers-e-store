@@ -8,8 +8,6 @@ export default class ControllerCart {
     this.view = new ViewCart(
         this.handleCloseCart,
         this.handleClickOpenCart,
-        this.handleDeleteItem,
-        this.model.getProductById,
         this.removeFromCart,
         this.updateCart);
     this.observer = new Observer();
@@ -37,12 +35,20 @@ export default class ControllerCart {
   }
 
   handleClickOpenCart = () => {
-    const dataCart = this.model.getFromLocalStorage();
+    const dataCart = this.prepareDataForCart();
     this.observer.notify("OPEN_CART", dataCart);
   }
 
-  handleDeleteItem = el => {
-
+  prepareDataForCart = () => {
+    const shortData = this.model.getFromLocalStorage();
+    const fullData = [];
+    console.log('shortData = ', shortData);
+    shortData.forEach((el, ind) => {
+      fullData[ind] = this.model.getProductById(el.id);
+      fullData[ind].count = el.count;
+    })
+    console.log('fullData = ', fullData);
+    return fullData;
   }
 
   // get full data from card component
@@ -54,16 +60,16 @@ export default class ControllerCart {
   removeFromCart = (id) => {
     this.model.data = this.model.data.filter(el => el.id !== id);
     this.model.updateLocalStorage();
-    this.view.renderCart(this.model.getFromLocalStorage());
+    this.view.renderCart(this.prepareDataForCart());
     this.model.addToSpanCart();
   }
 
-  // update Cart after change count of products
+  // update Cart after change count of products in the cart
   updateCart = (el) => {
     let changeElement = this.model.data.find(item => item.id === el.dataset.id);
     changeElement.count = el.value;
     this.model.updateLocalStorage();
-    this.view.renderCart(this.model.getFromLocalStorage());
+    this.view.renderCart(this.prepareDataForCart());
     this.model.addToSpanCart();
   }
 }

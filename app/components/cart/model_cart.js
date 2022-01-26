@@ -9,12 +9,12 @@ export default class ModelCart {
   }
 
   addToArrayForCart(product) {
-    const { id, model, price } = product;
+    const { id } = product;
     // check if there is already in this array
-    let ind = this.data.findIndex(el => el.id == id);
+    let ind = this.data.findIndex(el => el.id === id);
     if (+ind >= 0) {
       this.data[ind].count++ ;
-    } else this.data.push({ id, model, price, count: 1 })
+    } else this.data.push({ id, count: 1 })
 
     return this.data;
   }
@@ -27,7 +27,7 @@ export default class ModelCart {
   }
 
   addToSpanCart = () => {
-    this.cartCounter.innerHTML = localStorage.getItem('counter') || 0;
+    this.cartCounter.innerHTML = this.span;
   }
 
   updateLocalStorage() {

@@ -1,12 +1,12 @@
 export default class ViewCart {
   list;
-  constructor(handleCloseCart, handleOpenCart, handleDeleteItem, getProductById, removeFromCart, updateCart){
+  constructor(handleCloseCart, handleOpenCart, removeFromCart, updateCart){
     this.body = document.querySelector('#root');
 
     this.handleCloseCart = handleCloseCart;
     this.handleOpenCart = handleOpenCart;
-    this.handleDeleteItem = handleDeleteItem;
-    this.getProductById = getProductById;
+    // this.handleDeleteItem = handleDeleteItem;
+    // this.getProductById = getProductById;
     this.removeFromCart = removeFromCart;
     this.updateCart = updateCart;
 
@@ -66,7 +66,6 @@ export default class ViewCart {
 
     data.forEach((item, index) => {
       const { id, model, price, count } = item;
-      // const product = this.getProductById(id);
       cartItem += `
         <tr id="${index+1}">
           <td>${index+1}</td>
