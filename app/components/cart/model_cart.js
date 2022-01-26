@@ -14,7 +14,7 @@ export default class ModelCart {
     // check if there is already in this array
     let ind = this.data.findIndex(el => el.id == id);
     if (+ind >= 0) {
-      this.data[ind].count += 1 ;
+      this.data[ind].count++ ;
     } else this.data.push({ id, model, price, count: 1 })
 
     return this.data;
