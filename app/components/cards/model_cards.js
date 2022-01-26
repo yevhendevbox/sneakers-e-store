@@ -1,6 +1,7 @@
 export default class ModelCards {
     URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRcESKRYVExtFTOPQsh3oZflgb4jVqS2yvf3MnWzwweiz-gmnLZWnpZ20tul3-3Z0o1ioIasliMJgbp/pub?output=tsv";
-
+    filteredData = [];
+    searchResult = [];
   getData() {
     return fetch(this.URL)
             .then(resp => resp.text())
@@ -21,14 +22,43 @@ export default class ModelCards {
 
   getFilterData(arr) {
     let filteredData = [];
-    const type = arr[1];
-    const value = arr[0];
+    let type;
+    let value;
+
+    if (!arr.length) {
+      this.filteredData = this.data;
+      return this.filteredData;
+    }
+
+    type = arr[1];
+    value = arr[0];
 
     filteredData = this.data.filter(item => {
       return item[type].toLowerCase() === value;
     });
     this.filteredData = filteredData;
     return filteredData;
+  }
+
+  getSearchedData(str){
+
+    if (!str && !this.filteredData.length){
+      this.filteredData = this.data;
+      return this.filteredData;
+    }
+
+    if (!this.filteredData.length) {
+      this.filteredData = this.data;
+    }
+
+    this.searchResult = this.filteredData.filter(item => item.brand.toLowerCase().includes(str.toLowerCase())
+);
+
+    if (this.searchResult.length === 0) {
+      this.searchResult = this.filteredData.filter(item => item.model.toLowerCase().includes(str.toLowerCase()));
+    }
+
+    return this.searchResult;
   }
 
   // Sorting logic
@@ -40,17 +70,17 @@ export default class ModelCards {
     let dataTemp = this.data;
     const sortMulti = sortVocabular[sortType];
 
-    if (this.filteredData !== []) {
+    if (this.filteredData.length) {
       dataTemp = this.filteredData;
     }
     if (sortType.includes('price')){
       dataTemp.sort((a, b) => (a.price - b.price) * sortMulti);
     }
     if (sortType === 'brandA') {
-      dataTemp.sort((a, b) => a.brand > b.brand);
+      dataTemp.sort((a, b) => a.brand.localeCompare(b.brand));
     }
     if (sortType === 'brandZ') {
-      dataTemp.sort((a, b) => b.brand > a.brand);
+      dataTemp.sort((a, b) => b.brand.localeCompare(a.brand));
     }
     return dataTemp;
   }
