@@ -10,7 +10,6 @@ export default class ModelCart {
 
   addToArrayForCart(product) {
     const { id, model, price } = product;
-    console.log('{ id, model, price } = ', { id, model, price });
     // check if there is already in this array
     let ind = this.data.findIndex(el => el.id == id);
     if (+ind >= 0) {
@@ -42,7 +41,6 @@ export default class ModelCart {
   }
 
   setFullData(data) {
-    console.log('full data in cart model from render', data);
     this.fulldata = data;
   }
 

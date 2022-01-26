@@ -26,8 +26,6 @@ export default class ControllerModal {
   }
 
   handleClickCardDetailsToCart = product => {
-    console.log('this=' ,this);
-    console.log('cart from details = ', product);
     this.observer.notify('ADD_TO_CART', product);
   }
 }

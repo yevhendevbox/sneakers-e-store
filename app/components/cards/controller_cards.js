@@ -45,8 +45,6 @@ export default class ControllerCards{
   //addToCart from cards. Add product to cart data array
   handleAddToCart = id =>{
     const product = this.model.getProductById(id);
-    console.log('cart');
     this.observer.notify('ADD_TO_CART', product);
   }
-}
 }

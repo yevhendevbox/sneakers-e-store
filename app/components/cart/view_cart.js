@@ -60,7 +60,6 @@ export default class ViewCart {
   }
 
   renderCart = data => {
-    console.log('data for cart rendering', data);
     let cartItem = ``;
     let countTotal = 0;
     let priceTotal = 0;
@@ -68,7 +67,6 @@ export default class ViewCart {
     data.forEach((item, index) => {
       const { id, model, price, count } = item;
       // const product = this.getProductById(id);
-      console.log('product by id for cart rendering', item);
       cartItem += `
         <tr id="${index+1}">
           <td>${index+1}</td>
@@ -82,7 +80,6 @@ export default class ViewCart {
         </tr>`;
       priceTotal += price * count;
       countTotal += +count;
-      console.log('countTotal = ', countTotal);
     });
     this.cartBody.innerHTML = cartItem;
     this.totalCount.innerText = `${countTotal}`;
