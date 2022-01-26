@@ -84,10 +84,9 @@ export default class ModelCards {
     }
     return dataTemp;
   }
-  //  Method to catch event getObjForModalById
 
   //get product by id
-  getProductById = id => this.data.find(item => item.id === id)
+  getProductById = id => this.data.find(item => item.id === id);
 
   getProductsAll = () => this.data;
 

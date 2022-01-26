@@ -255,10 +255,6 @@ Main Styles
     width: 100%;
   }
 
-  .card {
-    max-width: 48%;
-  }
-
   .nav-search {
     width: 50%;
   }
@@ -354,6 +350,16 @@ Main Styles
   .detailes_img {
     width: 100%;
   }
+
+  .modal-inner {
+    max-width: 450px;
+    min-width: 200px;
+  }
+
+  .btn-close {
+    top: -49rem;
+    right: -1rem;
+  }
 }
 
 /* ============================= =================================
@@ -371,6 +377,7 @@ Main Styles
   background-color: #21bb46 !important;
   border: 1px solid #21bb46 !important;
 }
+
 .cart_counter {
   border-radius: 50%;
   background-color: #21bb46;
@@ -381,7 +388,8 @@ Main Styles
   font-size: 12px;
 }
 
-.form-select:focus, .counter:focus {
+.form-select:focus,
+.counter:focus {
   outline-offset: 0;
   outline: 0;
   box-shadow: none;
@@ -406,15 +414,4 @@ Main Styles
 .cartModal .modal-inner {
   max-width: 900px;
   min-width: 600px;
-}
-
-  .modal-inner {
-    max-width: 450px;
-    min-width: 200px;
-  }
-
-  .btn-close {
-    top: -49rem;
-    right: -1rem;
-  }
 }

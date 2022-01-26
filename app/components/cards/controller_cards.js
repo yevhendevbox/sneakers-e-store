@@ -47,4 +47,9 @@ export default class ControllerCards{
     const product = this.model.getProductById(id);
     this.observer.notify('ADD_TO_CART', product);
   }
+
+  // Get chunks from pagination model to render page
+  renderPageByNum = chunk => {
+
+  }
 }
