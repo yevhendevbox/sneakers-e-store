@@ -2,16 +2,20 @@ export default class ViewModal {
   MODAL_CONTAINER = document.body.querySelector(".modal-outer");
   MODAL_BODY = document.body.querySelector(".modal-inner");
 
-  constructor(handleClickOutsideModal){
+  constructor(handleClickOutsideModal, handleClickCardDetailsToCart){
     this.handleClickOutsideModal = handleClickOutsideModal;
-  }
+    this.handleClickCardDetailsToCart = handleClickCardDetailsToCart;
 
-  init(){
     this.addListener(this.handleClickOutsideModal);
   }
 
+  // init(){
+  //   this.addListener(this.handleClickOutsideModal);
+  // }
 
-  renderDetailsToModal = ({ model, image, description, price, brand, color, size }) => {
+
+  renderDetailsToModal = ({ id, model, image, description, price, brand, color, size }) => {
+    const product = { id, model, image, description, price, brand, color, size };
     const strModalHTML = `
       <div class="detailes_wrapper">
         <div class="detailes_img">
@@ -31,13 +35,17 @@ export default class ViewModal {
           </div>
           <hr />
           <p class="details_content--description">${description}</p>
-          <button class="btn btn-dark">Add <i class="bi bi-bag-plus-fill"></i></button>
+          <button class="btn btn-dark btn-cart" data-id="${ id }">Add <i class="bi bi-bag-plus-fill"></i></button>
         </div>
       </div>
     `;
     this.MODAL_BODY.innerHTML = '';
     this.MODAL_BODY.insertAdjacentHTML('beforeend', strModalHTML);
     this.MODAL_CONTAINER.classList.add('open');
+
+    this.MODAL_BODY.querySelector('.btn-cart').addEventListener('click', () => {
+      this.handleClickCardDetailsToCart(product);
+    });
   }
 
   closeModal() {

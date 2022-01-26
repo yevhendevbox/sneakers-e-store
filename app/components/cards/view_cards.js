@@ -1,12 +1,18 @@
-
 export default class ViewCards {
   BODY = document.body.querySelector('.flex');
 
-  constructor(handleClickCardDetails){
-  // Addin event on the products container to handle witch card was clicked...
-    this.BODY.addEventListener('click', handleClickCardDetails);
+  constructor(handleClickCardDetails, handleAddToCart){
+    this.handleAddToCart = handleAddToCart;
 
+  // Addin event on the products container to handle witch card was clicked...
+
+    this.BODY.addEventListener('click', (e) => {
+      if (e.target.classList.contains("btn-cart") || e.target.closest(".btn-cart")) {
+        this.handleAddToCart(e.target.dataset.id);
+      } else handleClickCardDetails(e);
+    });
   }
+
   // Render cards template to the page
   renderSneakers(sneakers) {
     this.BODY.innerHTML = '';
@@ -29,13 +35,14 @@ export default class ViewCards {
             </div>
           <div class="card-footer bg-transparent d-flex justify-content-between align-content-start align-items-center">
             <h5 class="price">$ ${price}</h5>
-            <a href="#" class="btn btn-lg btn-dark">Add <i class="bi bi-bag-plus-fill"></i></a>
+            <a href="#" class="btn btn-lg btn-dark btn-cart" data-id="${ id }">Add <i class="bi bi-bag-plus-fill"></i></a>
           </div>
         </div>
     `;
   }
 
-    // Get clicked card ID
-    getCardId = event => event.target.closest(".card").dataset.id;
+  // Get clicked card ID
+  getCardId = event => event.target.closest(".card").dataset.id;
+
 
 }
