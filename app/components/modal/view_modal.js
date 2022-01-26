@@ -6,14 +6,12 @@ export default class ViewModal {
     this.handleClickOutsideModal = handleClickOutsideModal;
     this.handleClickCardDetailsToCart = handleClickCardDetailsToCart;
 
-    // document.querySelector('.btn-cart').addEventListener('click', (e) => {
-    //   this.handleClickCardDetailsToCart(e.target.dataset.id);
-    // });
-  }
-
-  init(){
     this.addListener(this.handleClickOutsideModal);
   }
+
+  // init(){
+  //   this.addListener(this.handleClickOutsideModal);
+  // }
 
 
   renderDetailsToModal = ({ id, model, image, description, price, brand, color, size }) => {

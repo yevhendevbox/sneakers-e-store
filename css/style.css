@@ -332,6 +332,10 @@ Main Styles
   color: #21bb46;
 }
 
+.card .card-footer .btn-cart:hover {
+  background-color: #21bb46 !important;
+  border: 1px solid #21bb46 !important;
+}
 .cart_counter {
   border-radius: 50%;
   background-color: #21bb46;
@@ -342,28 +346,19 @@ Main Styles
   font-size: 12px;
 }
 
-.form-select:focus {
-  border: 1px solid #ced4da;
+.form-select:focus, .counter:focus {
   outline-offset: 0;
   outline: 0;
   box-shadow: none;
 }
-/* ---modal cart---- */
-/*.my_modal {*/
-/*  display: none !important;*/
-/*  background: rgba(0, 0, 0, 0.5) !important;*/
-/*  justify-content: center !important;*/
-/*  align-items: center !important;*/
-/*}*/
 
-/*.my_content {*/
-/*  width: 500px;*/
-/*  height: 700px;*/
-/*}*/
+.form-select:focus {
+  border: 1px solid #ced4da;
+}
 
-/*.modal-show {*/
-/*  display: flex !important;*/
-/*}*/
+.counter {
+  width: 60px;
+}
 
 .modal-top {
   justify-content: center !important;
@@ -372,19 +367,6 @@ Main Styles
   display: flex;
   padding: 1rem 1rem;
 }
-
-/*.modal-span {*/
-/*  color: black;*/
-/*  letter-spacing: 1px;*/
-/*  display: inline-block;*/
-/*  width: 75px;*/
-/*}*/
-/*.modal-price {*/
-/*  text-transform: uppercase;*/
-/*  color: black;*/
-/*  display: inline-block;*/
-/*  margin-right: 10px;*/
-/*}*/
 
 .cartModal .modal-inner {
   max-width: 900px;

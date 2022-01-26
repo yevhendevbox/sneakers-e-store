@@ -15,9 +15,9 @@ export default class ControllerModal {
   }
 
   handleClickOutsideModal = event => {
-    console.log('event.target = ', event.target);
-    console.log('!event.target.closest(".modal-inner") = ', !event.target.closest(".modal-inner"));
-    console.log('event.target.classList.contains(btn-close) = ', event.target.classList.contains('btn-close'));
+    // console.log('event.target = ', event.target);
+    // console.log('!event.target.closest(".modal-inner") = ', !event.target.closest(".modal-inner"));
+    // console.log('event.target.classList.contains(btn-close) = ', event.target.classList.contains('btn-close'));
     const isOutside = !event.target.closest(".modal-inner");
     const isCloseBtn = event.target.classList.contains('btn-close');
     if (isOutside || isCloseBtn) {
@@ -25,7 +25,8 @@ export default class ControllerModal {
     }
   }
 
-  handleClickCardDetailsToCart(product) {
+  handleClickCardDetailsToCart = product => {
+    console.log('this=' ,this);
     console.log('cart from details = ', product);
     this.observer.notify('ADD_TO_CART', product);
   }

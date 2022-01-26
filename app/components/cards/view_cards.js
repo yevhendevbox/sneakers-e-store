@@ -8,7 +8,6 @@ export default class ViewCards {
 
     this.BODY.addEventListener('click', (e) => {
       if (e.target.classList.contains("btn-cart") || e.target.closest(".btn-cart")) {
-        // console.log('e.target.classList = ', e.target.classList);
         this.handleAddToCart(e.target.dataset.id);
       } else handleClickCardDetails(e);
     });

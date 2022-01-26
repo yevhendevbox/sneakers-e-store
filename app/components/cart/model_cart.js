@@ -24,8 +24,6 @@ export default class ModelCart {
     this.span = this.data.reduce((sum, el) => {
       return sum + +el.count;
     }, 0)
-    console.log('data = ', this.data);
-    console.log('span = ', this.span);
     return this.span;
   }
 
@@ -40,16 +38,15 @@ export default class ModelCart {
   }
 
   getFromLocalStorage() {
-    return this.data = JSON.parse(localStorage.getItem('sneakers')) || [];
+    return JSON.parse(localStorage.getItem('sneakers')) || [];
   }
 
-  getFullData(data) {
+  setFullData(data) {
     console.log('full data in cart model from render', data);
-    return data;
+    this.fulldata = data;
   }
 
   getProductById = id => {
-    let list = this.getFullData();
-    return list.find(item => item.id === id)
+    return this.fulldata.find(item => item.id === id)
   }
 }

@@ -1,12 +1,14 @@
 export default class ViewCart {
   list;
-  constructor(handleCloseCart, handleOpenCart, handleDeleteItem, getProductById){
+  constructor(handleCloseCart, handleOpenCart, handleDeleteItem, getProductById, removeFromCart, updateCart){
     this.body = document.querySelector('#root');
 
     this.handleCloseCart = handleCloseCart;
     this.handleOpenCart = handleOpenCart;
     this.handleDeleteItem = handleDeleteItem;
     this.getProductById = getProductById;
+    this.removeFromCart = removeFromCart;
+    this.updateCart = updateCart;
 
     // listener on the button Cart in the header
     this.cart = document.querySelector('.cart_icon');
@@ -33,7 +35,10 @@ export default class ViewCart {
               </tbody>
             </table>
             <div class="d-flex justify-content-end">
-              <h5>Total: <span class="total-price text-success"></span></h5>
+              <h5>Total count: <span class="total-count text-success"></span></h5>
+            </div>
+            <div class="d-flex justify-content-end mt-3">
+              <h5>Total order value : <span class="total-price text-success"></span></h5>
             </div>
           </div>
           <div class="modal-footer border-top-0 d-flex justify-content-between">
@@ -47,9 +52,10 @@ export default class ViewCart {
 
     this.modal = document.querySelector('#cartModal');
     this.cartBody = document.querySelector('.cart-body');
+    this.totalCount = document.querySelector('.total-count');
     this.totalPrice = document.querySelector('.total-price');
-    // this.cartCounter = document.querySelector('.cart_counter');
 
+    // listener on the open modal Cart window for closing
     this.modal.addEventListener('click', this.handleCloseCart);
   }
 
@@ -57,6 +63,7 @@ export default class ViewCart {
     console.log('data for cart rendering', data);
     let cartItem = ``;
     let countTotal = 0;
+    let priceTotal = 0;
 
     data.forEach((item, index) => {
       const { id, model, price, count } = item;
@@ -66,29 +73,30 @@ export default class ViewCart {
         <tr id="${index+1}">
           <td>${index+1}</td>
             <td>${model}</td>
-            <td>${count}</td>
+            <td><input class="counter" data-id=${id} type="number" name="count" value=${+count} min="1" step="1"></td>
             <td>${price}</td>
-            <td>${price * count}</td>
+            <td>${Math.round(price * count)}</td>
             <td>
-              <a href="#" class="delete-item btn btn-danger btn-sm">
-                <i class="fa fa-times"></i>
-              </a>
+              <a href="#" class="delete-item btn btn-danger btn-sm" data-id="${id}"></a>
             </td>
         </tr>`;
-      countTotal += item.price;
+      priceTotal += price * count;
+      countTotal += +count;
+      console.log('countTotal = ', countTotal);
     });
     this.cartBody.innerHTML = cartItem;
-    this.totalPrice.innerText = `${countTotal}$`;
+    this.totalCount.innerText = `${countTotal}`;
+    this.totalPrice.innerText = `${Math.round(priceTotal)} $`;
 
-    let deleteItemBtn = document.querySelectorAll('.delete-item');
-    deleteItemBtn.forEach(el => el.addEventListener('click', () => this.handleDeleteItem(el)))
+    let counterBtn = document.querySelectorAll('.counter');
+    counterBtn.forEach(el => el.addEventListener('change', () => this.updateCart(el)))
+    let deleteItemsBtn = document.querySelectorAll('.delete-item');
+    deleteItemsBtn.forEach(el => el.addEventListener('click', () => this.removeFromCart(el.dataset.id)))
 
     this.modal.classList.add('open');
   }
 
   close = (e) => {
-    // debugger;
-    this.modal.innerHTML = '';
     this.modal.classList.remove('open');
   }
 
