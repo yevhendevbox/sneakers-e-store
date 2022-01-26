@@ -71,6 +71,23 @@ Main Styles
   margin-right: .4em;
 }
 
+.nav-btns {
+  order: 2;
+}
+
+.nav-search {
+  order: 1;
+}
+
+.nav-search {
+  width: 30%;
+}
+
+.nav-search input {
+  padding: .5em 2em;
+  font-size: 1.4rem;
+}
+
 .price {
   font-size: 2.5rem;
 }
@@ -85,6 +102,7 @@ Main Styles
 
 .card {
   max-width: 32%;
+  max-height: 640px;
   transition: all .3s ease;
 }
 
@@ -108,6 +126,13 @@ Main Styles
   margin-bottom: 1em;
   overflow: hidden;
   word-wrap: break-word;
+}
+
+.card-info {
+  display: flex;
+  gap: 2em;
+  margin-bottom: 1em;
+  justify-content: flex-start;
 }
 
 .card-footer {
@@ -154,6 +179,11 @@ Main Styles
   width: 15px;
   height: 15px;
   margin-right: 1em;
+}
+
+.form-check-input:hover,
+.form-check label {
+  cursor: pointer;
 }
 
 .form-check-input:checked {
@@ -217,6 +247,7 @@ Main Styles
   .form-floating {
     margin-right: 0;
   }
+
 }
 
 @media screen and (max-width: 515px) {
@@ -226,6 +257,10 @@ Main Styles
 
   .card {
     max-width: 48%;
+  }
+
+  .nav-search {
+    width: 50%;
   }
 }
 
@@ -373,3 +408,13 @@ Main Styles
   min-width: 600px;
 }
 
+  .modal-inner {
+    max-width: 450px;
+    min-width: 200px;
+  }
+
+  .btn-close {
+    top: -49rem;
+    right: -1rem;
+  }
+}

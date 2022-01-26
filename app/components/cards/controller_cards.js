@@ -13,6 +13,8 @@ export default class ControllerCards{
 
     this.init();
     this.observer.subscribe("ON_CLICK_SORT", this.handleSort);
+    this.observer.subscribe("ON_CLICK_FILTER", this.handleFilter);
+    this.observer.subscribe("ON_INPUT_SEARCH", this.handleSearch);
   }
   init(){
     this.model.getData().then(d => this.view.renderSneakers(d));
@@ -21,6 +23,16 @@ export default class ControllerCards{
 
   handleSort = sortType => {
     const data = this.model.getSortData(sortType);
+    this.view.renderSneakers(data);
+  }
+
+  handleFilter = filterType => {
+    const data = this.model.getFilterData(filterType);
+    this.view.renderSneakers(data);
+  }
+
+  handleSearch = searchReq => {
+    const data = this.model.getSearchedData(searchReq);
     this.view.renderSneakers(data);
   }
 
@@ -36,4 +48,5 @@ export default class ControllerCards{
     console.log('cart');
     this.observer.notify('ADD_TO_CART', product);
   }
+}
 }
