@@ -6,7 +6,6 @@ export default class ControllerCart {
   constructor(){
     this.model = new ModelCart();
     this.view = new ViewCart(
-        // this.handleCloseCart,
         this.handleModalClick,
         this.handleClickOpenCart,
         this.removeFromCart,
@@ -26,24 +25,20 @@ export default class ControllerCart {
 
   handleOpenCart = data => {
     this.view.renderCart(data);
-    this.view.renderOrder();
   }
 
   handleModalClick = e => {
     if(e.target.classList.contains('order_btn')) {
       this.view.clickOrder(e);
     }
+    // if(e.target.classList.contains('make_order')) {
+    //   this.observer.notify('MAKE_ORDER', this.view.getInfoFromInputs());
+    // }
     if (e.target.classList.contains('cartModal')
       || e.target.classList.contains('close-cart')) {
       this.view.close(e);
     }
   }
-
-  // handleClickOrderBtn = e => {
-  //   if(e.target.classList.contains('order_btn')) {
-  //     this.view.clickOrder(e);
-  //   }
-  // }
 
   handleClickOpenCart = () => {
     const dataCart = this.prepareDataForCart();
@@ -52,12 +47,12 @@ export default class ControllerCart {
 
   prepareDataForCart = () => {
     const shortData = this.model.getFromLocalStorage();
-    const fullData = [];
+    const prepareData = [];
     shortData.forEach((el, ind) => {
-      fullData[ind] = this.model.getProductById(el.id);
-      fullData[ind].count = el.count;
+      prepareData[ind] = this.model.getProductById(el.id);
+      prepareData[ind].count = el.count;
     })
-    return fullData;
+    return prepareData;
   }
 
   // get full data from card component

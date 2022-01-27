@@ -5,26 +5,19 @@ import ViewOrder from "./view_order.js";
 export default class ControllerOrder {
   constructor(){
     this.model = new ModelOrder();
-    this.view = new ViewOrder(this.handleClickOrder);
+    this.view = new ViewOrder(this.handleMakeOrder);
 
     this.observer = new Observer();
-    this.observer.subscribe('OPEN_ORDER', this.handleOrderData);
-    this.observer.subscribe('RENDER', this.handleGetData);
+    this.observer.subscribe('MAKE_ORDER', this.handleOrder);
   }
 
-  handleOrderData () {
-
-    // add html to modal
-    this.view.addOrderForm();
+  handleMakeOrder () {
+    const inputsData = this.view.getInfoFromInputs();
+    this.observer.notify('MAKE_ORDER', inputsData);
   }
 
-  handleClickOrder() {
-    const dataOrder = this.model.getOrderFromLocalStorage();
-    this.observer.notify("OPEN_ORDER", dataOrder);
+  handleOrder (data) {
+    this.model.setOrderToLocalStorage(data);
   }
 
-  // get full data from card component
-  handleGetData = data => {
-    this.model.setFullData(data);
-  }
 }

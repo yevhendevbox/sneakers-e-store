@@ -3,11 +3,15 @@ export default class ModelOrder {
   constructor() {
   }
 
-  getOrderFromLocalStorage() {
-    return JSON.parse(localStorage.getItem('sneakers')) || [];
-  }
-
-  setFullData(data) {
-    this.fulldata = data;
+  setOrderToLocalStorage = ({name, email, phone}) =>{
+    const history = JSON.parse(localStorage.getItem('history')) || [];
+    const sneakers = JSON.parse(localStorage.getItem('sneakers')) || [];
+    history.push({
+      name,
+      email,
+      phone,
+      order: sneakers,
+    });
+    localStorage.setItem('history', JSON.stringify(history));
   }
 }
