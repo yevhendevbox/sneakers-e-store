@@ -6,7 +6,8 @@ export default class ControllerCart {
   constructor(){
     this.model = new ModelCart();
     this.view = new ViewCart(
-        this.handleCloseCart,
+        // this.handleCloseCart,
+        this.handleModalClick,
         this.handleClickOpenCart,
         this.removeFromCart,
         this.updateCart);
@@ -25,14 +26,24 @@ export default class ControllerCart {
 
   handleOpenCart = data => {
     this.view.renderCart(data);
+    this.view.renderOrder();
   }
 
-  handleCloseCart = e => {
+  handleModalClick = e => {
+    if(e.target.classList.contains('order_btn')) {
+      this.view.clickOrder(e);
+    }
     if (e.target.classList.contains('cartModal')
       || e.target.classList.contains('close-cart')) {
       this.view.close(e);
     }
   }
+
+  // handleClickOrderBtn = e => {
+  //   if(e.target.classList.contains('order_btn')) {
+  //     this.view.clickOrder(e);
+  //   }
+  // }
 
   handleClickOpenCart = () => {
     const dataCart = this.prepareDataForCart();
@@ -42,12 +53,10 @@ export default class ControllerCart {
   prepareDataForCart = () => {
     const shortData = this.model.getFromLocalStorage();
     const fullData = [];
-    console.log('shortData = ', shortData);
     shortData.forEach((el, ind) => {
       fullData[ind] = this.model.getProductById(el.id);
       fullData[ind].count = el.count;
     })
-    console.log('fullData = ', fullData);
     return fullData;
   }
 

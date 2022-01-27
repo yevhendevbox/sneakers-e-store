@@ -1,12 +1,10 @@
 export default class ViewCart {
-  list;
-  constructor(handleCloseCart, handleOpenCart, removeFromCart, updateCart){
+  constructor(handleModalClick, handleOpenCart, removeFromCart, updateCart){
     this.body = document.querySelector('#root');
 
-    this.handleCloseCart = handleCloseCart;
+    this.handleModalClick = handleModalClick;
+    // this.handleClickOrderBtn = handleClickOrderBtn;
     this.handleOpenCart = handleOpenCart;
-    // this.handleDeleteItem = handleDeleteItem;
-    // this.getProductById = getProductById;
     this.removeFromCart = removeFromCart;
     this.updateCart = updateCart;
 
@@ -41,14 +39,33 @@ export default class ViewCart {
               <h5>Total order value : <span class="total-price text-success"></span></h5>
             </div>
           </div>
+          <div class="cart-order-block d-none" id="orderBlock">
+            <div class="col-12 text-center"><h3 class="annotation-title">Введите свои данные</h3></div>
+            <form id="cartForm" class="row m-0">
+              <div class="form-group col-12 p-0 d-flex justify-content-center my-2">
+                <input type="text" name="customerName" id="customerName" placeholder="enter name" class="w-100 col-8"/>
+              </div>
+              <div class="form-group col-12 p-0 d-flex justify-content-center my-2">
+                <input type="email" name="customerEmail" id="customerEmail" placeholder="enter email" class="w-100 col-8"/>
+              </div>
+              <div class="form-group col-12 p-0 d-flex justify-content-center my-2">
+                <input type="text" name="customerPhone" id="customerPhone" placeholder="enter phone number" class="w-100 col-8"/>
+              </div>
+              <div class="col-12 d-flex justify-content-center">
+                <button id="orderSuccess" type="button" class="btn btn-primary mt-3">Make your order</button>
+              </div>
+            </form>  
+          </div>
           <div class="modal-footer border-top-0 d-flex justify-content-between">
             <button type="button" class="btn btn-secondary close-cart" data-dismiss="modal">Close</button>
             <button type="button" class="order_btn btn btn-success">Order</button>
-          </div>
-        </div>  
-    </div>`
+          </div>  
+        </div>
+      </div>  
+    </div>`;
 
     this.body.insertAdjacentHTML('afterbegin', modal);
+    this.inner = document.querySelector('.cart-order-block');
 
     this.modal = document.querySelector('#cartModal');
     this.cartBody = document.querySelector('.cart-body');
@@ -56,7 +73,7 @@ export default class ViewCart {
     this.totalPrice = document.querySelector('.total-price');
 
     // listener on the open modal Cart window for closing
-    this.modal.addEventListener('click', this.handleCloseCart);
+    this.modal.addEventListener('click', this.handleModalClick);
   }
 
   renderCart = data => {
@@ -94,6 +111,11 @@ export default class ViewCart {
 
   close = (e) => {
     this.modal.classList.remove('open');
+  }
+
+  clickOrder = (e) => {
+    this.inner.classList.remove('d-none');
+    document.querySelector('.order_btn').disabled = true;
   }
 
 }
