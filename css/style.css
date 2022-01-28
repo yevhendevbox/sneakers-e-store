@@ -387,6 +387,12 @@ Main Styles
   color: var(--accent);
 }
 
+.make_order {
+  font-size: 1.2rem;
+}
+
+.make_order:hover,
+.modal-inner .btn-cart:hover,
 .card .card-footer .btn-cart:hover {
   background-color: var(--accent) !important;
   border: 1px solid var(--accent) !important;
@@ -425,7 +431,7 @@ Main Styles
 .modal-top {
   justify-content: center !important;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--dark);
   display: flex;
   padding: 1rem 1rem;
 }
@@ -435,15 +441,11 @@ Main Styles
   min-width: 600px;
 }
 
-.btn-close {
-  top: -49rem;
-  right: -1rem;
-}
-
 .red {
   border: 1px solid red;
   /*background-image: linear-gradient(to right, pink, lightgreen);*/
 }
+
 /*input:valid:required {*/
 /*  border: 1px solid black;*/
 /*  !*background-image: linear-gradient(to right, pink, lightgreen);*!*/

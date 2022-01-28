@@ -40,7 +40,7 @@ export default class ViewCart {
             </div>
           </div>
           <div class="cart-order-block d-none" id="orderBlock">
-            <div class="col-12 text-center"><h3 class="annotation-title">Введите свои данные</h3></div>
+            <div class="col-12 text-center"><h3 class="annotation-title">Fill out the contact form</h3></div>
             <form class="form_order row m-0">
               <div class="form-group col-12 p-0 d-flex justify-content-center my-2">
                 <input type="text" name="name" placeholder="enter name" class="name w-75" maxlength="50"/>
@@ -52,16 +52,16 @@ export default class ViewCart {
                 <input type="text" name="phone" placeholder="+38050-444-22-33" class="phone w-75" maxlength="13"/>
               </div>
               <div class="col-12 d-flex justify-content-center">
-                <button type="button" class="make_order btn btn-primary mt-3">Make your order</button>
+                <button type="button" class="make_order btn btn-dark mt-3">Confirm order</button>
               </div>
-            </form>  
+            </form>
           </div>
           <div class="modal-footer border-top-0 d-flex justify-content-between">
             <button type="button" class="btn btn-secondary close-cart" data-dismiss="modal">Close</button>
             <button type="button" class="order_btn btn btn-success">Order</button>
-          </div>  
+          </div>
         </div>
-      </div>  
+      </div>
     </div>`;
 
     this.body.insertAdjacentHTML('afterbegin', modal);
