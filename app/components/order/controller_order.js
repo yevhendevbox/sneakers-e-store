@@ -18,7 +18,7 @@ export default class ControllerOrder {
       this.model.clearLocalStorage();
       this.view.closeCart();
       this.view.clearInput();
-      // this.model.notificate();
+      this.model.notificate();
     }
 
     //повесить отсылку на телеграм
