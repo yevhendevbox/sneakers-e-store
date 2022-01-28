@@ -45,7 +45,7 @@ export default class ViewCart {
             <button type="button" class="btn btn-secondary close-cart" data-dismiss="modal">Close</button>
             <button type="button" class="order_btn btn btn-success">Order</button>
           </div>
-        </div>  
+        </div>
     </div>`
 
     this.body.insertAdjacentHTML('afterbegin', modal);
@@ -75,7 +75,7 @@ export default class ViewCart {
             <td>${price}</td>
             <td>${Math.round(price * count)}</td>
             <td>
-              <a href="#" class="delete-item btn btn-danger btn-sm" data-id="${id}"></a>
+              <a href="#" class="delete-item btn btn-danger btn-sm" data-id="${id}">x</a>
             </td>
         </tr>`;
       priceTotal += price * count;

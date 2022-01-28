@@ -5,6 +5,7 @@ import ControllerSearch from "./components/search/controller_search.js";
 import ControllerSort from "./components/sort/controller_sort.js";
 import ControllerCart from "./components/cart/controller_cart.js";
 import ControllerPagination from "./components/pagination/controller_pagination.js";
+import ControllerOrdersHistory from "./components/orders_history/controller_ordersHistory.js";
 
 const controllerCards = new ControllerCards();
 const controllerModal = new ControllerModal();
@@ -12,4 +13,5 @@ const controllerCart = new ControllerCart();
 const controllerSort = new ControllerSort();
 const controllerFilter = new ControllerFilter();
 const controllerSearch = new ControllerSearch();
-const controllerPagination = new ControllerPagination();
+// const controllerPagination = new ControllerPagination();
+const controllerOrdersHistory = new ControllerOrdersHistory();

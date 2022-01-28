@@ -1,35 +1,34 @@
-import Observer from "../../observer.js";
+
 
 export default class ViewPagination {
   CONTAINER = document.querySelector('#content-container');
 
   constructor(){
-    this.observer = new Observer();
-  }
 
-  init(){
-    this.renderPuginationBtns();
   }
 
   renderPaginationContainer(){
     const strHTML = `
-      <div class="pagination_wrap"></div>
+      <div class="pagination_wrap">
+        <ul class="pagination>
+        </ul>
+      </div>
     `;
     this.CONTAINER.insertAdjacentHTML('beforeend', strHTML);
-    this.observer.notify('ON_RENDER_PAG_CONTAINER');
+    // this.observer.notify('ON_RENDER_PAG_CONTAINER');
   }
 
   renderPuginationBtns(pages = 3){
-    const strHTML = `
-    <ul class="pagination>
-      <li class="page-item active" aria-current="page">
-        <span class="page-link">1</span>
+
+    for (let i = 0; i <= pages; i++) {
+      const strHTML = `
+      <li class="page-item" aria-current="page" data-page="${i + 1}">
+        <span class="page-link">${i + 1}</span>
       </li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-    </ul>
     `;
+      document.querySelector('.pagination').insertAdjacentHTML('afterbegin', strHTML);
+    }
+
     // this.PAGINATION.innerHTML = '';
-    document.querySelector('.pagination_wrap').insertAdjacentHTML('afterbegin', strHTML);
   }
 }
