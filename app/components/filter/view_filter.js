@@ -28,7 +28,7 @@ export default class ViewFilter {
                 data-bs-target="#panelsStayOpen-collapseOne"
                 aria-expanded="true"
                 aria-controls="panelsStayOpen-collapseOne">
-                Filter by Gender:
+                Filter by gender:
               </button>
             </h2>
             <div id="panelsStayOpen-collapseOne"

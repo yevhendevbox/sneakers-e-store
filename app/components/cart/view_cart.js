@@ -92,7 +92,7 @@ export default class ViewCart {
             <td>${price}</td>
             <td>${Math.round(price * count)}</td>
             <td>
-              <a href="#" class="delete-item btn btn-danger btn-sm" data-id="${id}"></a>
+              <a href="#" class="delete-item btn btn-danger btn-sm" data-id="${id}">x</a>
             </td>
         </tr>`;
       priceTotal += price * count;
