@@ -435,6 +435,20 @@ Main Styles
   min-width: 600px;
 }
 
+.btn-close {
+  top: -49rem;
+  right: -1rem;
+}
+
+.red {
+  border: 1px solid red;
+  /*background-image: linear-gradient(to right, pink, lightgreen);*/
+}
+/*input:valid:required {*/
+/*  border: 1px solid black;*/
+/*  !*background-image: linear-gradient(to right, pink, lightgreen);*!*/
+/*}*/
+
 .cartModal .modal-body {
   font-size: 1.2rem;
 }

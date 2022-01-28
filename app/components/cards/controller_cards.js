@@ -9,8 +9,6 @@ export default class ControllerCards{
 
     this.observer = new Observer();
 
-    this.fullData = this.model.getProductsAll();
-
     this.init();
     this.observer.subscribe("ON_CLICK_SORT", this.handleSort);
     this.observer.subscribe("ON_CLICK_FILTER", this.handleFilter);

@@ -6,10 +6,8 @@ export default class ControllerCart {
   constructor(){
     this.model = new ModelCart();
     this.view = new ViewCart(
-        this.handleCloseCart,
+        this.handleModalClick,
         this.handleClickOpenCart,
-        this.handleDeleteItem,
-        this.model.getProductById,
         this.removeFromCart,
         this.updateCart);
     this.observer = new Observer();
@@ -29,20 +27,30 @@ export default class ControllerCart {
     this.view.renderCart(data);
   }
 
-  handleCloseCart = e => {
+  handleModalClick = e => {
+    if(e.target.classList.contains('order_btn')) {
+      this.view.clickOrder(e);
+    }
     if (e.target.classList.contains('cartModal')
       || e.target.classList.contains('close-cart')) {
       this.view.close(e);
+
     }
   }
 
   handleClickOpenCart = () => {
-    const dataCart = this.model.getFromLocalStorage();
+    const dataCart = this.prepareDataForCart();
     this.observer.notify("OPEN_CART", dataCart);
   }
 
-  handleDeleteItem = el => {
-
+  prepareDataForCart = () => {
+    const shortData = this.model.getFromLocalStorage();
+    const prepareData = [];
+    shortData.forEach((el, ind) => {
+      prepareData[ind] = this.model.getProductById(el.id);
+      prepareData[ind].count = el.count;
+    })
+    return prepareData;
   }
 
   // get full data from card component
@@ -54,16 +62,16 @@ export default class ControllerCart {
   removeFromCart = (id) => {
     this.model.data = this.model.data.filter(el => el.id !== id);
     this.model.updateLocalStorage();
-    this.view.renderCart(this.model.getFromLocalStorage());
+    this.view.renderCart(this.prepareDataForCart());
     this.model.addToSpanCart();
   }
 
-  // update Cart after change count of products
+  // update Cart after change count of products in the cart
   updateCart = (el) => {
     let changeElement = this.model.data.find(item => item.id === el.dataset.id);
     changeElement.count = el.value;
     this.model.updateLocalStorage();
-    this.view.renderCart(this.model.getFromLocalStorage());
+    this.view.renderCart(this.prepareDataForCart());
     this.model.addToSpanCart();
   }
 }
