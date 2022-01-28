@@ -2,6 +2,7 @@ export default class ModelCards {
     URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRcESKRYVExtFTOPQsh3oZflgb4jVqS2yvf3MnWzwweiz-gmnLZWnpZ20tul3-3Z0o1ioIasliMJgbp/pub?output=tsv";
     filteredData = [];
     searchResult = [];
+
   getData() {
     return fetch(this.URL)
             .then(resp => resp.text())
@@ -84,10 +85,9 @@ export default class ModelCards {
     }
     return dataTemp;
   }
-  //  Method to catch event getObjForModalById
 
   //get product by id
-  getProductById = id => this.data.find(item => item.id === id)
+  getProductById = id => this.data.find(item => item.id === id);
 
   getProductsAll = () => this.data;
 

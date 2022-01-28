@@ -3,10 +3,6 @@ import ViewFilter from "./view_filter.js";
 
 
 export default class ControllerFilter {
-  // CHECKBOX_CLASS = '.form-check-input';
-  // CHECKBOXES =  [...document.querySelectorAll(this.CHECKBOX_CLASS)];
-
-
   constructor(){
     this.view = new ViewFilter(this.handleFilterCheckboxCheck);
 

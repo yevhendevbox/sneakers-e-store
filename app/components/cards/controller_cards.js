@@ -15,24 +15,30 @@ export default class ControllerCards{
     this.observer.subscribe("ON_CLICK_SORT", this.handleSort);
     this.observer.subscribe("ON_CLICK_FILTER", this.handleFilter);
     this.observer.subscribe("ON_INPUT_SEARCH", this.handleSearch);
+    // this.observer.subscribe("ON_PAGE_COUNTED", this.renderPageByNum);
   }
   init(){
-    this.model.getData().then(d => this.view.renderSneakers(d));
-    this.observer.notify('RENDER', this.fullData);
+    this.model.getData().then(d => {
+      this.view.renderSneakers(d);
+      this.observer.notify('RENDER', this.model.data);
+    });
   }
 
   handleSort = sortType => {
     const data = this.model.getSortData(sortType);
+    // this.observer.notify("ON_SORTED_DATA", data);
     this.view.renderSneakers(data);
   }
 
   handleFilter = filterType => {
     const data = this.model.getFilterData(filterType);
+    // this.observer.notify("ON_FILTERED_DATA", data);
     this.view.renderSneakers(data);
   }
 
   handleSearch = searchReq => {
     const data = this.model.getSearchedData(searchReq);
+    // this.observer.notify("ON_SEARCHED_DATA", data);
     this.view.renderSneakers(data);
   }
 
@@ -47,4 +53,9 @@ export default class ControllerCards{
     const product = this.model.getProductById(id);
     this.observer.notify('ADD_TO_CART', product);
   }
+
+  // Get chunks from pagination model to render page
+  // renderPageByNum = chunk => {
+  //   this.view.renderSneakers(chunk);
+  // }
 }
