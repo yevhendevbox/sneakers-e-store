@@ -1,4 +1,5 @@
 export default class ViewCart {
+
   constructor(handleModalClick, handleOpenCart, removeFromCart, updateCart){
     this.body = document.querySelector('#root');
 
@@ -42,13 +43,13 @@ export default class ViewCart {
             <div class="col-12 text-center"><h3 class="annotation-title">Введите свои данные</h3></div>
             <form class="form_order row m-0">
               <div class="form-group col-12 p-0 d-flex justify-content-center my-2">
-                <input type="text" name="name" placeholder="enter name" class="name w-75"/>
+                <input type="text" name="name" placeholder="enter name" class="name w-75" maxlength="50"/>
               </div>
               <div class="form-group col-12 p-0 d-flex justify-content-center my-2">
-                <input type="email" name="email" placeholder="enter email" class="email w-75"/>
+                <input type="email" name="email" placeholder="example@gmail.com" class="email w-75" maxlength="50"/>
               </div>
               <div class="form-group col-12 p-0 d-flex justify-content-center my-2">
-                <input type="text" name="phone" placeholder="enter phone number" class="phone w-75"/>
+                <input type="text" name="phone" placeholder="+38050-444-22-33" class="phone w-75" maxlength="13"/>
               </div>
               <div class="col-12 d-flex justify-content-center">
                 <button type="button" class="make_order btn btn-primary mt-3">Make your order</button>
@@ -65,6 +66,7 @@ export default class ViewCart {
 
     this.body.insertAdjacentHTML('afterbegin', modal);
     this.inner = document.querySelector('.cart-order-block');
+    this.orderBtn = document.querySelector('.order_btn');
 
     this.modal = document.querySelector('#cartModal');
     this.cartBody = document.querySelector('.cart-body');
@@ -110,11 +112,13 @@ export default class ViewCart {
 
   close = (e) => {
     this.modal.classList.remove('open');
+    this.inner.classList.add('d-none');
+    this.orderBtn.disabled = false;
   }
 
   clickOrder = (e) => {
     this.inner.classList.remove('d-none');
-    document.querySelector('.order_btn').disabled = true;
+    this.orderBtn.disabled = true;
   }
 
 }

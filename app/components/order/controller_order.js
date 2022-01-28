@@ -8,16 +8,23 @@ export default class ControllerOrder {
     this.view = new ViewOrder(this.handleMakeOrder);
 
     this.observer = new Observer();
-    this.observer.subscribe('MAKE_ORDER', this.handleOrder);
+    this.observer.subscribe('RENDER', this.getFullData);
   }
 
-  handleMakeOrder () {
+  handleMakeOrder = () => {
     const inputsData = this.view.getInfoFromInputs();
-    this.observer.notify('MAKE_ORDER', inputsData);
+    if(this.model.validateInputs(inputsData)) {
+      this.model.setOrderToLocalStorage(inputsData, this.fulldata);
+      this.model.clearLocalStorage();
+      this.view.closeCart();
+      this.view.clearInput();
+      // this.model.notificate();
+    }
+
+    //повесить отсылку на телеграм
   }
 
-  handleOrder (data) {
-    this.model.setOrderToLocalStorage(data);
+  getFullData = (data) => {
+    this.fulldata = data;
   }
-
 }

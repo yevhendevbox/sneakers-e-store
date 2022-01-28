@@ -31,12 +31,10 @@ export default class ControllerCart {
     if(e.target.classList.contains('order_btn')) {
       this.view.clickOrder(e);
     }
-    // if(e.target.classList.contains('make_order')) {
-    //   this.observer.notify('MAKE_ORDER', this.view.getInfoFromInputs());
-    // }
     if (e.target.classList.contains('cartModal')
       || e.target.classList.contains('close-cart')) {
       this.view.close(e);
+
     }
   }
 

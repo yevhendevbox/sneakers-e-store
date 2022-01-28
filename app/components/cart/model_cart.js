@@ -10,13 +10,16 @@ export default class ModelCart {
 
   addToArrayForCart(product) {
     const { id } = product;
+    let dataFromLocal = JSON.parse(localStorage.getItem('sneakers')) || [];
+    // this.data = dataFromLocal;
     // check if there is already in this array
-    let ind = this.data.findIndex(el => el.id === id);
+    let ind = dataFromLocal.findIndex(el => el.id === id);
     if (+ind >= 0) {
-      this.data[ind].count++ ;
-    } else this.data.push({ id, count: 1 })
+      dataFromLocal[ind].count++ ;
+    } else dataFromLocal.push({ id, count: 1 })
+    this.data = dataFromLocal;
 
-    return this.data;
+    return dataFromLocal;
   }
 
   getCount = () => {
